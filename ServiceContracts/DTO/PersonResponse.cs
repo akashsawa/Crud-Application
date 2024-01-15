@@ -70,10 +70,18 @@ namespace ServiceContracts.DTO
                 ReceiveNewsLetters = person.ReceiveNewsLetters,
                 Address = person.Address,
                 CountryId = person.CountryId,
-                
+
                 Gender = person.Gender,
-                Age = (person.DateOfbirth != null) ? Math.Round((DateTime.Now - person.DateOfbirth.Value).TotalDays / 365.25) : null
+                Age = (person.DateOfbirth != null) ? Math.Round((DateTime.Now - person.DateOfbirth.Value).TotalDays / 365.25) : null, 
+                Country = person.Country?.CountryName
             };
+        }
+
+        private static PersonResponse ConvertPersonToPersonresponse(Person person)
+        {
+            PersonResponse personresponse = person.ToPersonResponse();
+            personresponse.Country = person.Country?.CountryName;
+            return personresponse;
         }
     }
 }

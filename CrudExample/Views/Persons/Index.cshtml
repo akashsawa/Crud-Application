@@ -9,7 +9,17 @@
         PERSONS
     </h1>
     @* <a href="~/persons/create">CREATE PERSON</a> *@
-    <a asp-controller="Persons" asp-action="Create">CREATE PERSON</a>
+
+
+    <a asp-controller="Persons" asp-action="Create" class="margin-auto">CREATE PERSON</a>
+
+    <a asp-controller="Persons" asp-action="PersonsPDF" class="margin-auto">Download As PDF</a>
+
+    <a asp-controller="Persons" asp-action="PersonsCSV" class="margin-auto">Download As CSV</a>
+
+    <a asp-controller="Persons" asp-action="PersonsExcel" class="margin-auto">Download As CSV</a>
+    
+
     <div class="box flex">
         <div class="flex-1">
             <select class="form-input" name="searchBy">

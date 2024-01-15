@@ -10,11 +10,11 @@ namespace ServiceContracts
 {
     public interface IPersonsService
     {
-        PersonResponse AddPerson(PersonAddRequest? personAddRequest);
+        Task<PersonResponse> AddPerson(PersonAddRequest? personAddRequest);
 
-        List<PersonResponse> GetAllPersons();
+        Task<List<PersonResponse>> GetAllPersons();
 
-        PersonResponse? GetpersonByPersonId(Guid? personid);
+        Task<PersonResponse>? GetpersonByPersonId(Guid? personid);
 
         /// <summary>
         /// returns all person objects that matches with the given search field and search string.
@@ -22,12 +22,16 @@ namespace ServiceContracts
         /// <param name="searchby"></param>
         /// <param name="searchString"></param>
         /// <returns></returns>
-        List<PersonResponse> GetFilteredpersons(string searchby, string? searchString);
+        Task<List<PersonResponse>> GetFilteredpersons(string searchby, string? searchString);
 
-        List<PersonResponse> GetSortedPersons(List<PersonResponse> allPersons, string sortBy, SortOrderOptions sortOrder);
+        Task<List<PersonResponse>> GetSortedPersons(List<PersonResponse> allPersons, string sortBy, SortOrderOptions sortOrder);
 
-        PersonResponse UpdatePerson(PersonUpdateRequest? personUpdateRequest);
+        Task<PersonResponse> UpdatePerson(PersonUpdateRequest? personUpdateRequest);
 
-        bool DeletePerson(Guid? personId);
+        Task<bool> DeletePerson(Guid? personId);
+
+        Task<MemoryStream> GetPersonsCSV();
+
+        Task<MemoryStream> GetPersonsExcel();
     }
-} 
+}
